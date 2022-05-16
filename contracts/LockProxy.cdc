@@ -1,7 +1,7 @@
 import CrossChainManager from "./CrossChainManager.cdc"
 import ZeroCopySink from "./ZeroCopySink.cdc"
 import ZeroCopySource from "./ZeroCopySource.cdc"
-import FungibleToken from "./flowFT/FungibleToken.cdc"
+import FungibleToken from "./FungibleToken.cdc"
 
 // import FungibleToken from 0xee82856bf20e2aa6 // on emulator
 // import FungibleToken from 0x9a0766d93b6608b7 // on testnet
@@ -288,7 +288,7 @@ pub contract LockProxy {
 
     // UFix64 to UInt256 , decimal 8
     pub fun ufix64ToUint256(_ num: UFix64): UInt256 {
-        var multiple: UInt256 = 10^8
+        var multiple: UInt256 = 100000000
         var left: UInt256 = UInt256(num)
         var right: UFix64 = num - UFix64(left)
 
@@ -298,7 +298,7 @@ pub contract LockProxy {
 
     // UInt256 to UFix64 , decimal 8
     pub fun uint256ToUfix64(_ num: UInt256): UFix64 {
-        var multiple: UInt256 = 10^8
+        var multiple: UInt256 = 100000000
         var left: UInt256 = num / multiple
         var right: UInt256 = num % multiple
         

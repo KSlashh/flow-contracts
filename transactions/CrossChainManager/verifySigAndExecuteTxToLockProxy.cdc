@@ -10,11 +10,11 @@ transaction(
 ) {
     prepare(acct: AuthAccount) {
 
-        let p = LockProxy.pathStrMap[String.encodeHex(pathStr.utf8)]
+        let p = LockProxy.getPathFromStr(String.encodeHex(pathStr.utf8))
         if (p == nil) {
             LockProxy.registerReceiverPath(pathStr: pathStr, path: userReceiverPublicPath)
         }
-        assert(LockProxy.pathStrMap[String.encodeHex(pathStr.utf8)]!.toString() == userReceiverPublicPath.toString(), 
+        assert(LockProxy.getPathFromStr(String.encodeHex(pathStr.utf8))!.toString() == userReceiverPublicPath.toString(), 
             message: "fail to regesiter receiver path")
 
         assert(CrossChainManager.verifySigAndExecuteTx(
