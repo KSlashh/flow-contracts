@@ -1,4 +1,4 @@
-import FungibleToken from "./flowFT/FungibleToken.cdc"
+import FungibleToken from "./FungibleToken.cdc"
 
 pub contract FeeManager {
     

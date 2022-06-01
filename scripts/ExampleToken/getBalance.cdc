@@ -4,15 +4,13 @@ import FungibleToken from 0xFUNGIBLETOKEN
 // import FungibleToken from 0x9a0766d93b6608b7 // on testnet
 // import FungibleToken from 0xf233dcee88fe0abe // on mainnet
 
-pub fun main(owner: Address): UFix64 {
-
-    // edit below if you don't use default value
-    // --------- edit below ---------
-    var vaultPath = /public/exampleTokenBalance
-    // --------- edit above ---------
-
+pub fun main(
+    owner: Address,
+    vaultPath: Path
+): UFix64 {
+    let vaultPublicPath PublicPath = (vaultPath as? PublicPath)!
     var acct = getAccount(owner)
-    let balanceRef = acct.getCapability(vaultPath)
+    let balanceRef = acct.getCapability(vaultPublicPath)
         .borrow<&{FungibleToken.Balance}>()
         ?? panic("Could not borrow a reference to the acct balance")
 

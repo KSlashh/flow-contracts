@@ -1,5 +1,6 @@
 import LockProxy from "../../contracts/LockProxy.cdc"
 
+// e.g userVaultPath: /public/tokenReceiver ， pathStr: "tokenReceiver"
 transaction(
     userVaultPath: Path,
     pathStr: String

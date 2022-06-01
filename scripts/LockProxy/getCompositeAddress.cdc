@@ -1,5 +1,6 @@
 import ZeroCopySink from 0xZEROCOPYSINK
 
+// e.g addrStr: "1234567890abcdef" pathStr: "tokenReceiver" for 0x1234567890abcdef./public/tokenReceiver
 pub fun main(addrStr: String, pathStr: String): String {
     var addr: UInt64 = strToUint64(addrStr)
     var res: [UInt8] = ZeroCopySink.WriteUint64(addr)

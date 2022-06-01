@@ -1,6 +1,7 @@
 
 flow.testnet.json
 flow.mainnet.json
+*.json
 
 .DS_Store
 abandon/
