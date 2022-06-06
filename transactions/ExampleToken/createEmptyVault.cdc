@@ -1,16 +1,19 @@
 import ExampleToken from "../../contracts/ExampleToken.cdc"
 import FungibleToken from "../../contracts/FungibleToken.cdc"
 
-transaction {
-    prepare(acct: AuthAccount) {
-        // edit below if you don't use default value
-        // --------- edit below ---------
-        var vaultStoragePath = /storage/exampleTokenVault
-        var vaultBalancePath = /public/exampleTokenBalance
-        var vaultReceiverPath = /public/exampleTokenReceiver 
-        // --------- edit above ---------
+// replace all "ExampleToken" with the specific token
 
-        // don't edit below
+// example parameters:
+// var vaultStoragePath = /storage/exampleTokenVault
+// var vaultBalancePath = /public/exampleTokenBalance
+// var vaultReceiverPath = /public/exampleTokenReceiver 
+transaction(
+    vaultStoragePath: StoragePath,
+    vaultBalancePath: PublicPath,
+    vaultReceiverPath: PublicPath
+) {
+    prepare(acct: AuthAccount) {
+
         let vault <- ExampleToken.createEmptyVault()
 
         acct.save<@ExampleToken.Vault>(<-vault, to: vaultStoragePath)
